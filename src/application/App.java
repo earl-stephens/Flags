@@ -4,32 +4,63 @@ import java.util.Scanner;
 
 public class App {
 	public static void main(String[] args) {
-
+		/* Commenting out the below in order to do the coding challenge
+		 * 
+		 * Scanner scanner = new Scanner(System.in);
+		 * 
+		 * //In this case, the boolean is a flag //A flag is usually a binary value used
+		 * to control //the program
+		 * 
+		 * 
+		 * boolean gotCodeword = false;
+		 * 
+		 * for (;;) { System.out.print(" > "); String input = scanner.nextLine();
+		 * 
+		 * if (input.equals("quit")) { break; } else if (input.equals("volcano")) {
+		 * gotCodeword = true; } }
+		 * 
+		 * scanner.close();
+		 * 
+		 * if (gotCodeword) { System.out.println("Codeword entered."); } else {
+		 * System.out.println("No codeword detected."); }
+		 * 
+		 */
+		
+		/* Coding challenge
+		 * Create a program that asks for the user's password
+		 * If they type the correct password, print 'Access granted'
+		 * and end the program
+		 * If they type the wrong password, print 'Incorrect password'
+		 * and ask for the password again.
+		 * If they type the wrong password three times, print 'Access denied'
+		 * and end the program.
+		 */
+		
+		final String PASSWORD = "secure";
+		
 		Scanner scanner = new Scanner(System.in);
+		String userInput = null;
+		int counter = 0;
+		System.out.print("Enter your password: ");
 		
-		//In this case, the boolean is a flag
-		//A flag is usually a binary value used to control
-		//the program
-		
-		boolean gotCodeword = false;
+		do {
+			userInput = scanner.nextLine();
 
-		for (;;) {
-			System.out.print(" > ");
-			String input = scanner.nextLine();
-
-			if (input.equals("quit")) {
+			if(!userInput.equals(PASSWORD)) {
+				System.out.println("Incorrect password");
+				counter++;
+			} 
+			
+			else if (userInput.equals(PASSWORD)){
+				System.out.println("Access granted");
 				break;
-			} else if (input.equals("volcano")) {
-				gotCodeword = true;
 			}
-		}
-
+			
+		} while(counter < 3);
 		scanner.close();
-
-		if (gotCodeword) {
-			System.out.println("Codeword entered.");
-		} else {
-			System.out.println("No codeword detected.");
+		
+		if (counter == 3) {
+			System.out.println("Access denied");
 		}
 	}
 }
