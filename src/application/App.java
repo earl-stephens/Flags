@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 public class App {
 	public static void main(String[] args) {
-		/* Commenting out the below in order to do the coding challenge
+		/*
+		 * Commenting out the below in order to do the coding challenge
 		 * 
 		 * Scanner scanner = new Scanner(System.in);
 		 * 
@@ -25,41 +26,56 @@ public class App {
 		 * System.out.println("No codeword detected."); }
 		 * 
 		 */
-		
-		/* Coding challenge
-		 * Create a program that asks for the user's password
-		 * If they type the correct password, print 'Access granted'
-		 * and end the program
-		 * If they type the wrong password, print 'Incorrect password'
-		 * and ask for the password again.
-		 * If they type the wrong password three times, print 'Access denied'
-		 * and end the program.
+
+		/*
+		 * Coding challenge Create a program that asks for the user's password If they
+		 * type the correct password, print 'Access granted' and end the program If they
+		 * type the wrong password, print 'Incorrect password' and ask for the password
+		 * again. If they type the wrong password three times, print 'Access denied' and
+		 * end the program.
+		 */
+
+		/*
+		 * final String PASSWORD = "secure";
+		 * 
+		 * Scanner scanner = new Scanner(System.in); String userInput = null; int
+		 * counter = 0; System.out.print("Enter your password: ");
+		 * 
+		 * do { userInput = scanner.nextLine();
+		 * 
+		 * if(!userInput.equals(PASSWORD)) { System.out.println("Incorrect password");
+		 * counter++; }
+		 * 
+		 * else if (userInput.equals(PASSWORD)){ System.out.println("Access granted");
+		 * break; }
+		 * 
+		 * } while(counter < 3); scanner.close();
+		 * 
+		 * if (counter == 3) { System.out.println("Access denied"); }
 		 */
 		
+		//Alternate solution to coding challenge
+		
 		final String PASSWORD = "secure";
-		
 		Scanner scanner = new Scanner(System.in);
+		boolean accessDenied = true;
 		String userInput = null;
-		int counter = 0;
-		System.out.print("Enter your password: ");
+		System.out.println("Enter your password: ");
 		
-		do {
+		for(int i = 0; i < 3; i++) {
 			userInput = scanner.nextLine();
-
-			if(!userInput.equals(PASSWORD)) {
-				System.out.println("Incorrect password");
-				counter++;
-			} 
 			
-			else if (userInput.equals(PASSWORD)){
+			if (userInput.equals(PASSWORD)) {
 				System.out.println("Access granted");
+				accessDenied = false;
 				break;
+			} else {
+				System.out.println("Incorrect password");
 			}
-			
-		} while(counter < 3);
+		}
 		scanner.close();
 		
-		if (counter == 3) {
+		if(accessDenied) {
 			System.out.println("Access denied");
 		}
 	}
